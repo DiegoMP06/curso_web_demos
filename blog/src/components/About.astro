@@ -1,0 +1,164 @@
+---
+import { Picture } from "astro:assets";
+import AboutImage from "../assets/about.png";
+---
+
+<section class="about">
+    <div class="about__shapes">
+        <div class="about__shape about__shape--top"></div>
+        <div class="about__shape about__shape--circle"></div>
+        <div class="about__shape about__shape--bottom"></div>
+    </div>
+
+    <div class="about__content">
+        <div class="container about__container">
+            <Picture
+                src={AboutImage}
+                alt="About Image"
+                width={500}
+                height={500}
+                class="about__image"
+                formats={["avif", "webp"]}
+            />
+
+            <div class="about__text-container">
+                <h2 class="about__title">¡Hola!</h2>
+
+                <p class="about__text">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Velit itaque repellat similique atque maiores amet fuga,
+                    quam asperiores illum ex quia quaerat eum explicabo
+                    laudantium dolor expedita, nobis consequuntur veniam.
+                </p>
+                <p class="about__text">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Velit itaque repellat similique atque maiores amet fuga,
+                    quam asperiores illum ex quia quaerat eum explicabo
+                    laudantium dolor expedita, nobis consequuntur veniam.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .about {
+        display: flex;
+        position: relative;
+        min-height: 50rem;
+        overflow: hidden;
+    }
+
+    @media (min-width: 768px){
+        .about {
+            min-height: 40rem;
+        }
+    }
+
+    .about__shape {
+        position: absolute;
+        z-index: 1;
+    }
+
+    .about__shape--top {
+        top: -50px;
+        left: -50px;
+        width: 200px;
+        height: 150px;
+        background-color: var(--color-primary-600);
+        border-radius: 0 0 50% 0;
+    }
+
+    @media (min-width: 768px){
+        .about__shape--top {
+            width: 350px;
+            height: 200px;
+        }
+    }
+
+    .about__shape--circle {
+        top: 50%;
+        left: 25%;
+        transform: translateY(-50%);
+        width: 100px;
+        height: 100px;
+        background-color: var(--color-gray-dark);
+        border-radius: 50%;
+    }
+
+    @media (min-width: 768px){
+        .about__shape--circle {
+            width: 150px;
+            height: 150px;
+        }
+    }
+
+    .about__shape--bottom {
+        bottom: 0;
+        right: 0;
+        width: 300px;
+        height: 100px;
+        background-color: var(--color-primary-600);
+        border-radius: 100% 0 0 0;
+    }
+
+    @media (min-width: 768px){
+        .about__shape--bottom {
+            width: 500px;
+            height: 150px;
+        }
+    }
+
+    .about__content {
+        position: relative;
+        flex: 1;
+        z-index: 2;
+        background-color: rgb(255, 255, 255, 0.5);
+    }
+
+    .about__container {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+    }
+
+    @media (min-width: 768px) {
+        .about__container {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    .about__image {
+        aspect-ratio: 1/1;
+        max-width: 30rem;
+        width: 100%;
+        min-width: 20rem;
+        height: auto;
+        transform: translateX(-10rem) translateY(5rem);
+        margin-top: -7rem;
+        margin-bottom: -5rem;
+    }
+
+    @media (min-width: 480px){
+        .about__image {
+            max-width: 50rem;
+            min-width: 40rem;
+            transform: translateX(-10rem) translateY(5rem);
+            margin-top: -7rem;
+            margin-bottom: -5rem;
+        }
+    }
+
+    @media (min-width: 768px){
+        .about__image {
+            min-width: 45rem;
+            transform: translateX(0rem) translateY(10rem);
+        }
+    }
+
+    .about__text-container {
+    }
+</style>

@@ -1,0 +1,130 @@
+---
+import "normalize.css";
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="generator" content={Astro.generator} />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+            rel="stylesheet"
+        />
+
+        <title>Blog Portfolio</title>
+    </head>
+
+    <body>
+        <slot />
+    </body>
+</html>
+
+<style is:global>
+    :root {
+        --color-primary-50: #f9f9ec;
+        --color-primary-100: #f1f2d5;
+        --color-primary-200: #e2e7af;
+        --color-primary-300: #cdd680;
+        --color-primary-400: #b8c358;
+        --color-primary-500: #9dab3b;
+        --color-primary-600: #78852b;
+        --color-primary-700: #5c6625;
+        --color-primary-800: #4a5222;
+        --color-primary-900: #404720;
+        --color-primary-950: #21260d;
+
+        --color-white: #ffffff;
+        --color-black: #000000;
+
+        --color-gray-extra-light: #d2d2d2;
+        --color-gray-light: #868e96;
+        --color-gray-dark: #212529;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        box-sizing: inherit;
+        font-size: 62.5%;
+    }
+
+    body {
+        font-family: "Nunito", sans-serif;
+        font-size: 16px;
+        background-color: var(--color-gray-extra-light);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .section {
+        padding-bottom: 6rem;
+        padding-top: 6rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    img {
+        max-width: 100%;
+        display: block;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: bold;
+        margin-top: 4rem;
+        margin-bottom: 2rem;
+        color: var(--color-gray-dark);
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    h2 {
+        font-size: 3.6rem;
+    }
+
+    h3 {
+        font-size: 3.2rem;
+    }
+
+    h4 {
+        font-size: 2.8rem;
+    }
+
+    p,
+    a,
+    li {
+        font-size: 1.8rem;
+        color: var(--color-gray-dark);
+    }
+
+    p {
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+    }
+</style>

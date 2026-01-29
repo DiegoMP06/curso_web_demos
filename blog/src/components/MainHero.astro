@@ -1,0 +1,171 @@
+---
+import { Picture } from "astro:assets";
+import Hero from "../assets/hero.png";
+---
+
+<header class="header">
+    <Picture
+        src={Hero}
+        alt="Hero Image"
+        width={1200}
+        height={800}
+        class="header__hero"
+        formats={["avif", "webp"]}
+    />
+
+    <div class="header__content">
+        <div class="header__container container">
+            <div class="header__nav">
+                <p class="header__logo">
+                    Free<span class="header__logo--lighting">lancer</span>
+                </p>
+
+                <nav class="header__links">
+                    <a href="/" class="header__nav-link">Inicio</a>
+                    <a href="/about" class="header__nav-link">Sobre mi</a>
+                    <a href="/blog" class="header__nav-link">Blog</a>
+                    <a href="/contact" class="header__nav-link">Contacto</a>
+                </nav>
+            </div>
+
+            <div class="header__info">
+                <h1 class="header__name">Diego Meneses Pérez</h1>
+
+                <p class="header__description">
+                    Desarrollador Web Full Stack & Diseñador Web Frontend
+                </p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<style>
+    .header {
+        width: 100%;
+        height: 55rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    @media (width >= 768px) {
+        .header {
+            height: 40rem;
+        }
+    }
+
+    .header__hero {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .header__content {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .header__container {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .header__nav {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    @media (width >= 768px) {
+        .header__nav {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    .header__logo {
+        font-size: 4rem;
+        color: var(--color-white);
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .header__logo--lighting {
+        color: var(--color-primary-300);
+        font-weight: normal;
+    }
+
+    .header__links {
+        display: flex;
+        flex-direction: column;
+    }
+
+    @media (width >= 768px) {
+        .header__links {
+            flex-direction: row;
+            gap: 1rem;
+        }
+    }
+
+    .header__nav-link {
+        color: var(--color-white);
+        font-size: 2.2rem;
+        font-weight: bold;
+        text-align: center;
+        padding: 0.5rem 1rem;
+    }
+
+    .header__nav-link:hover {
+        color: var(--color-primary-300);
+        transition: color 0.3s ease-in-out;
+    }
+
+    .header__info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    @media (min-width: 768px){
+        .header__info {
+            align-items: flex-start;
+        }
+    }
+
+    .header__name {
+        color: var(--color-white);
+        font-size: 4rem;
+        margin: 0;
+        text-align: center;
+    }
+
+    @media (min-width: 768px){
+        .header__name {
+            font-size: 4.5rem;
+        }
+    }
+
+    .header__description {
+        color: var(--color-white);
+        font-size: 2rem;
+        background-color: var(--color-primary-700);
+        padding: 1rem 2rem;
+        display: inline-block;
+        border-radius: 1rem;
+        border: 2px solid var(--color-primary-950);
+        text-align: center;
+        margin: 1rem 0 0 0;
+    }
+
+    @media (min-width: 768px){
+        .header__description {
+            font-size: 2.5rem;
+        }
+    }
+</style>
