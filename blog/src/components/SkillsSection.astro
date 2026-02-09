@@ -1,0 +1,58 @@
+---
+import SkillItem from "./SkillItem.astro";
+import TechsInfinite from "./TechsInfinite.astro";
+---
+
+<section class="skills">
+    <div class="skills__container container section">
+        <h2 class="skills__title">Skills</h2>
+
+        <div class="skills__grid">
+            <SkillItem title="Diseño UI/UX" icon="mdi:desktop-windows">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam et, neque maxime quia placeat repudiandae, eos
+                molestiae qui nobis beatae esse nisi harum, corporis quae amet
+                expedita praesentium. Illum, deserunt.
+            </SkillItem>
+
+            <SkillItem title="SEO" icon="mdi:search-web">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam et, neque maxime quia placeat repudiandae, eos
+                molestiae qui nobis beatae esse nisi harum, corporis quae amet
+                expedita praesentium. Illum, deserunt.
+            </SkillItem>
+
+            <SkillItem title="Performance" icon="mdi:performance">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam et, neque maxime quia placeat repudiandae, eos
+                molestiae qui nobis beatae esse nisi harum, corporis quae amet
+                expedita praesentium. Illum, deserunt.
+            </SkillItem>
+        </div>
+    </div>
+</section>
+
+<TechsInfinite />
+
+<style>
+    .skills {
+        background-color: var(--color-primary-700);
+    }
+
+    .skills__grid {
+        display: grid;
+        grid-template-columns: 100%;
+        gap: 2rem;
+    }
+
+    @media (width >= 768px) {
+        .skills__grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .skills__title {
+        color: var(--color-white);
+        text-align: center;
+    }
+</style>

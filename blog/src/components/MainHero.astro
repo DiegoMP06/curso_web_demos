@@ -5,8 +5,9 @@ import Hero from "../assets/hero.png";
 
 <header class="header">
     <Picture
+        loading="eager"
         src={Hero}
-        alt="Hero Image"
+        alt="Imagen del hero"
         width={1200}
         height={800}
         class="header__hero"
@@ -15,12 +16,12 @@ import Hero from "../assets/hero.png";
 
     <div class="header__content">
         <div class="header__container container">
-            <div class="header__nav">
+            <div class="header__nav-container">
                 <p class="header__logo">
                     Free<span class="header__logo--lighting">lancer</span>
                 </p>
 
-                <nav class="header__links">
+                <nav class="header__nav">
                     <a href="/" class="header__nav-link">Inicio</a>
                     <a href="/about" class="header__nav-link">Sobre mi</a>
                     <a href="/blog" class="header__nav-link">Blog</a>
@@ -41,48 +42,48 @@ import Hero from "../assets/hero.png";
 
 <style>
     .header {
-        width: 100%;
-        height: 55rem;
+        min-height: 40rem;
         position: relative;
         overflow: hidden;
-    }
-
-    @media (width >= 768px) {
-        .header {
-            height: 40rem;
-        }
+        display: flex;
     }
 
     .header__hero {
+        position: absolute;
         width: 100%;
-        display: block;
+        height: 100%;
+        inset: 0;
         object-fit: cover;
-        object-position: center;
+        object-position: top;
+        z-index: 1;
     }
 
     .header__content {
-        position: absolute;
-        inset: 0;
+        position: relative;
+        flex: 1;
+        display: flex;
+        z-index: 2;
         background-color: rgba(0, 0, 0, 0.7);
     }
 
     .header__container {
         padding-top: 4rem;
         padding-bottom: 4rem;
-        height: 100%;
+        flex: 1;
+        gap: 6rem;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
 
-    .header__nav {
+    .header__nav-container {
         display: flex;
         flex-direction: column;
         gap: 3rem;
     }
 
     @media (width >= 768px) {
-        .header__nav {
+        .header__nav-container {
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
@@ -101,13 +102,13 @@ import Hero from "../assets/hero.png";
         font-weight: normal;
     }
 
-    .header__links {
+    .header__nav {
         display: flex;
         flex-direction: column;
     }
 
     @media (width >= 768px) {
-        .header__links {
+        .header__nav {
             flex-direction: row;
             gap: 1rem;
         }
@@ -132,7 +133,7 @@ import Hero from "../assets/hero.png";
         align-items: center;
     }
 
-    @media (min-width: 768px){
+    @media (min-width: 768px) {
         .header__info {
             align-items: flex-start;
         }
@@ -145,7 +146,7 @@ import Hero from "../assets/hero.png";
         text-align: center;
     }
 
-    @media (min-width: 768px){
+    @media (min-width: 768px) {
         .header__name {
             font-size: 4.5rem;
         }
@@ -163,7 +164,7 @@ import Hero from "../assets/hero.png";
         margin: 1rem 0 0 0;
     }
 
-    @media (min-width: 768px){
+    @media (min-width: 768px) {
         .header__description {
             font-size: 2.5rem;
         }

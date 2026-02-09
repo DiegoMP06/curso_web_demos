@@ -1,0 +1,116 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<section class="techs__container">
+    <div class="techs__slider">
+        <div class="techs__content">
+            <Icon class="techs__item" name="mdi:language-html5" />
+            <Icon class="techs__item" name="mdi:language-css3" />
+            <Icon class="techs__item" name="mdi:language-javascript" />
+            <Icon class="techs__item" name="mdi:language-java" />
+            <Icon class="techs__item" name="mdi:language-c" />
+            <Icon class="techs__item" name="mdi:language-ruby" />
+            <Icon class="techs__item" name="mdi:language-python" />
+            <Icon class="techs__item" name="mdi:language-rust" />
+            <Icon class="techs__item" name="mdi:language-php" />
+            <Icon class="techs__item" name="mdi:language-go" />
+            <Icon class="techs__item" name="mdi:language-kotlin" />
+            <Icon class="techs__item" name="mdi:angularjs" />
+            <Icon class="techs__item" name="mdi:vuejs" />
+            <Icon class="techs__item" name="mdi:nodejs" />
+            <Icon class="techs__item" name="mdi:react" />
+            <Icon class="techs__item" name="mdi:language-typescript" />
+        </div>
+        <div class="techs__content" aria-hidden="true">
+            <Icon class="techs__item" name="mdi:language-html5" />
+            <Icon class="techs__item" name="mdi:language-css3" />
+            <Icon class="techs__item" name="mdi:language-javascript" />
+            <Icon class="techs__item" name="mdi:language-java" />
+            <Icon class="techs__item" name="mdi:language-c" />
+            <Icon class="techs__item" name="mdi:language-ruby" />
+            <Icon class="techs__item" name="mdi:language-python" />
+            <Icon class="techs__item" name="mdi:language-rust" />
+            <Icon class="techs__item" name="mdi:language-php" />
+            <Icon class="techs__item" name="mdi:language-go" />
+            <Icon class="techs__item" name="mdi:language-kotlin" />
+            <Icon class="techs__item" name="mdi:angularjs" />
+            <Icon class="techs__item" name="mdi:vuejs" />
+            <Icon class="techs__item" name="mdi:nodejs" />
+            <Icon class="techs__item" name="mdi:react" />
+            <Icon class="techs__item" name="mdi:language-typescript" />
+        </div>
+    </div>
+</section>
+
+<style>
+    .techs__container {
+        overflow: hidden; /* Oculta el exceso */
+        width: 100%;
+        padding: 6rem 0;
+        background: var(--color-primary-950);
+        display: flex;
+        position: relative;
+    }
+
+    .techs__container::before,
+    .techs__container::after {
+        position: absolute;
+        top: 0;
+        width: 25rem;
+        height: 100%;
+        content: "";
+        z-index: 2;
+    }
+
+    .techs__container::before {
+        left: 0;
+        background: linear-gradient(
+            to left,
+            transparent,
+            var(--color-primary-950)
+        );
+    }
+
+    .techs__container::after {
+        right: 0;
+        background: linear-gradient(
+            to right,
+            transparent,
+            var(--color-primary-950)
+        );
+    }
+
+    .techs__slider {
+        display: flex;
+        width: max-content;
+        animation: scroll 40s linear infinite;
+    }
+
+    .techs__content {
+        display: flex;
+        gap: 5rem;
+        padding-right: 5rem;
+    }
+
+    .techs__item {
+        color: var(--color-primary-700);
+        width: 5rem;
+        height: 5rem;
+        aspect-ratio: 1/1;
+        flex-shrink: 0;
+    }
+
+    @keyframes scroll {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    .techs__container:hover .techs__slider {
+        animation-play-state: paused;
+    }
+</style>

@@ -1,0 +1,19 @@
+---
+import { Picture } from "astro:assets";
+
+type Props = {
+    image: string;
+};
+const { image } = Astro.props;
+---
+
+<div class="post">
+    <Picture
+        src={image}
+        alt={`Imagen de ${image}`}
+        width={500}
+        height={500}
+        class="post__image"
+        formats={["avif", "webp"]}
+    />
+</div>
