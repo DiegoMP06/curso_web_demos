@@ -1,0 +1,30 @@
+<footer class="footer">
+    <p class="footer__text" id="text-footer"></p>
+</footer>
+
+<style>
+    .footer {
+        background-color: var(--color-primary-950);
+        padding: 24.5rem 2rem 2rem 2rem;
+    }
+
+    .footer__text {
+        text-align: center;
+        color: var(--color-white);
+        font-size: 1.6rem;
+        font-weight: bold;
+    }
+
+    @media (width >= 768px) {
+        .footer__text {
+            font-size: 2.2rem;
+        }
+    }
+</style>
+
+<script>
+    const textFooter = document.querySelector(
+        "#text-footer",
+    ) as HTMLParagraphElement;
+    textFooter.innerHTML = `Todos los derechos reservados Diego Meneses Pérez &copy; ${new Date().getFullYear()}`;
+</script>

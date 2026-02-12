@@ -43,9 +43,9 @@ import "normalize.css";
         --color-white: #ffffff;
         --color-black: #000000;
 
-        --color-gray-extra-light: #d2d2d2;
-        --color-gray-light: #868e96;
-        --color-gray-dark: #212529;
+        --color-gray-extra-light: #efeded;
+        --color-gray-light: #a3a9b0;
+        --color-gray-dark: #5c5e60;
     }
 
     *,
@@ -59,6 +59,13 @@ import "normalize.css";
     html {
         box-sizing: inherit;
         font-size: 62.5%;
+        scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        html {
+            scroll-behavior: auto;
+        }
     }
 
     body {
@@ -74,8 +81,8 @@ import "normalize.css";
     }
 
     .section {
-        padding-bottom: 6rem;
-        padding-top: 6rem;
+        padding-bottom: 3rem;
+        padding-top: 3rem;
     }
 
     a {
@@ -119,7 +126,8 @@ import "normalize.css";
 
     p,
     a,
-    li {
+    li,
+    label {
         font-size: 1.8rem;
         color: var(--color-gray-dark);
     }
@@ -127,5 +135,9 @@ import "normalize.css";
     p {
         margin-bottom: 2rem;
         margin-top: 2rem;
+    }
+
+    textarea {
+        resize: none;
     }
 </style>

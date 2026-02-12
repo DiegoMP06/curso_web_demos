@@ -8,8 +8,8 @@ import Hero from "../assets/hero.png";
         loading="eager"
         src={Hero}
         alt="Imagen del hero"
-        width={1200}
-        height={800}
+        width={Hero.width}
+        height={Hero.height}
         class="header__hero"
         formats={["avif", "webp"]}
     />
@@ -22,10 +22,10 @@ import Hero from "../assets/hero.png";
                 </p>
 
                 <nav class="header__nav">
-                    <a href="/" class="header__nav-link">Inicio</a>
-                    <a href="/about" class="header__nav-link">Sobre mi</a>
-                    <a href="/blog" class="header__nav-link">Blog</a>
-                    <a href="/contact" class="header__nav-link">Contacto</a>
+                    <a href="#about" class="header__nav-link">Sobre Mí</a>
+                    <a href="#skills" class="header__nav-link">Habilidades</a>
+                    <a href="#blog" class="header__nav-link">Blog</a>
+                    <a href="#contact" class="header__nav-link">Contacto</a>
                 </nav>
             </div>
 

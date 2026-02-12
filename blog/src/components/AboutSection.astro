@@ -3,7 +3,7 @@ import { Picture } from "astro:assets";
 import AboutImage from "../assets/about.png";
 ---
 
-<section class="about">
+<section class="about" id="about">
     <div class="about__shapes">
         <div class="about__shape about__shape--top"></div>
         <div class="about__shape about__shape--circle"></div>
@@ -16,8 +16,8 @@ import AboutImage from "../assets/about.png";
                 src={AboutImage}
                 loading="eager"
                 alt="Imagen sobre Nosotros"
-                width={500}
-                height={500}
+                width={AboutImage.width}
+                height={AboutImage.height}
                 class="about__image"
                 formats={["avif", "webp"]}
             />
@@ -152,7 +152,7 @@ import AboutImage from "../assets/about.png";
 
     @media (min-width: 768px) {
         .about__image {
-            max-width: 50rem;
+            max-width: 45rem;
             transform: translateX(0rem) translateY(10rem);
         }
     }

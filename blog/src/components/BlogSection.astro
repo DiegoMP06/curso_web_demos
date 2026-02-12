@@ -1,25 +1,29 @@
 ---
+import { getCollection, type CollectionEntry } from "astro:content";
 import BlogItem from "./BlogItem.astro";
 
+const projects: CollectionEntry<"projects">[] = await getCollection("projects");
 ---
 
-<section class="blog section container">
-    <h2 class="blog__title">
-        Blog y Proyectos
-    </h2>
+<section class="blog section container" id="blog">
+    <h2 class="blog__title">Blog y Proyectos</h2>
 
     <div class="blog__grid">
-        <BlogItem image="/projects/1.png" />
-        <BlogItem image="/projects/2.png" />
-        <BlogItem image="/projects/3.png" />
-        <BlogItem image="/projects/4.png" />
-        <BlogItem image="/projects/5.png" />
-        <BlogItem image="/projects/6.png" />
+        {projects.map((project) => (
+            <BlogItem project={project}  />
+        ))}
     </div>
 </section>
 
 <style>
     .blog__title {
         text-align: center;
+    }
+
+    .blog__grid {
+        margin-top: 4rem;
+        display: grid;
+        grid-template-columns: 100%;
+        gap: 4rem;
     }
 </style>
