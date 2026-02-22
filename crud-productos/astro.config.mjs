@@ -11,7 +11,7 @@ import icon from 'astro-icon';
 
 import vue from '@astrojs/vue';
 
-import vercel from '@astrojs/vercel';
+import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
@@ -27,5 +27,5 @@ export default defineConfig({
     domains: ['res.cloudinary.com'],
   },
 
-  adapter: vercel(),
+  adapter: cloudflare(),
 });
