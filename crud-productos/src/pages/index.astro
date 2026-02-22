@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { db, Product, count, desc, eq, Category } from "astro:db";
+import ProductItem from "../components/cart/ProductItem.astro";
+import Pagination from "../components/ui/Pagination.astro";
+
+const itemsPerPage = 10;
+const url = new URL(Astro.request.url);
+const currentPage = Number(url.searchParams.get("page")) || 1;
+
+const totalItemsResult = await db.select({ value: count() }).from(Product);
+
+const totalItems = totalItemsResult[0].value;
+const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+if (currentPage > totalPages || currentPage < 1) {
+    return Astro.redirect("/products");
+}
+
+const products = await db
+    .select()
+    .from(Product)
+    .innerJoin(Category, eq(Product.categoryId, Category.id))
+    .orderBy(desc(Product.id))
+    .limit(itemsPerPage)
+    .offset((currentPage - 1) * itemsPerPage);
+---
+
+<Layout>
+	<h2 class="text-3xl font-bold text-gray-600 text-center">
+        Productos
+    </h2>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+        {products.map((item) => <ProductItem item={item} />)}
+    </div>
+
+    {
+        totalPages > 1 && (
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                totalItems={totalItems}
+            />
+        )
+    }
+</Layout>

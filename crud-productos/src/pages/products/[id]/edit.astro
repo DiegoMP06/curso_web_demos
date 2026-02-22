@@ -1,0 +1,40 @@
+---
+import { db, Category, eq, Product } from "astro:db";
+import Layout from "../../../layouts/Layout.astro";
+import EditProduct from "../../../components/products/EditProduct";
+
+const { id } = Astro.params;
+
+if (!id) {
+    return Astro.redirect("/products");
+}
+
+const product = await db
+    .select()
+    .from(Product)
+    .where(eq(Product.id, Number(id)))
+    .get();
+
+if (!product) {
+    return Astro.redirect("/products");
+}
+
+const categories = await db.select().from(Category);
+---
+
+<Layout>
+    <h1 class="text-3xl font-bold text-center mt-4 text-gray-600">
+        Editar Producto
+    </h1>
+
+    <div class="mt-8">
+        <a
+            href="/products"
+            class="text-white bg-blue-700 hover:bg-blue-800 px-4 py-2 rounded mt-4 inline-block transition-colors font-bold"
+        >
+            Volver
+        </a>
+    </div>
+
+    <EditProduct client:load categories={categories} product={product} />
+</Layout>

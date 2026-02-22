@@ -1,0 +1,82 @@
+---
+import { Icon } from "astro-icon/components";
+
+type Props = {
+    totalPages: number;
+    totalItems: number;
+    currentPage: number;
+    params?: {
+        [key: string]: string | number;
+    };
+};
+
+const { totalPages, totalItems, currentPage, params } = Astro.props;
+
+const links = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+const getUrlWithParams = (page: number) => {
+    const url = new URL(Astro.request.url);
+    url.searchParams.set("page", page.toString());
+
+    Object.entries(params || {}).forEach(([key, value]) => {
+        url.searchParams.set(key, value.toString());
+    });
+
+    return url.pathname + url.search;
+};
+---
+
+<div class="flex flex-col md:flex-row items-center justify-between mt-20 gap-4">
+    <p class="font-semibold text-gray-500">
+        Página {currentPage} de {totalPages} - Total de items: {totalItems}
+    </p>
+
+    <div class="flex gap-2 items-center">
+        <a
+            href={getUrlWithParams(1)}
+            aria-label="Primer Página"
+            tabindex={currentPage === 1 ? 0 : -1}
+            class={`py-2 px-4 rounded ${currentPage === 1 ? "bg-blue-800 text-white pointer-events-none cursor-not-allowed" : "bg-blue-700 hover:bg-blue-800 text-white fill-white"}`}
+        >
+            <Icon class="size-6" name="mdi:chevron-double-left" />
+        </a>
+        <a
+            href={getUrlWithParams(currentPage - 1)}
+            tabindex={currentPage === 1 ? 0 : -1}
+            aria-label="Anterior"
+            class={`py-2 px-4 rounded ${currentPage === 1 ? "bg-blue-800 text-white pointer-events-none cursor-not-allowed" : "bg-blue-700 hover:bg-blue-800 text-white fill-white"}`}
+        >
+            <Icon class="size-6" name="mdi:chevron-left" />
+        </a>
+
+        {
+            links.map((page) => (
+                <a
+                    href={getUrlWithParams(page)}
+                    tabindex={page === currentPage ? 0 : -1}
+                    aria-label={`Página ${page}`}
+                    class={`hidden md:block py-2 px-4 rounded ${page === currentPage ? "bg-blue-800 text-white pointer-events-none cursor-not-allowed" : "bg-blue-700 hover:bg-blue-800 text-white fill-white"}`}
+                >
+                    {page}
+                </a>
+            ))
+        }
+
+        <a
+            href={getUrlWithParams(currentPage + 1)}
+            tabindex={currentPage === totalPages ? 0 : -1}
+            aria-label="Siguiente"
+            class={`py-2 px-4 rounded ${currentPage === totalPages ? "bg-blue-800 text-white pointer-events-none cursor-not-allowed" : "bg-blue-700 hover:bg-blue-800 text-white fill-white"}`}
+        >
+            <Icon class="size-6" name="mdi:chevron-right" />
+        </a>
+        <a
+            href={getUrlWithParams(totalPages)}
+            tabindex={totalPages === currentPage ? 0 : -1}
+            aria-label="Última Página"
+            class={`py-2 px-4 rounded ${totalPages === currentPage ? "bg-blue-800 text-white pointer-events-none cursor-not-allowed" : "bg-blue-700 hover:bg-blue-800 text-white fill-white"}`}
+        >
+            <Icon class="size-6" name="mdi:chevron-double-right" />
+        </a>
+    </div>
+</div>

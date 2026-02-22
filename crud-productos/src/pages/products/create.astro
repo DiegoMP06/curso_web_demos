@@ -1,0 +1,24 @@
+---
+import { db, Category } from "astro:db";
+import CreateProduct from "../../components/products/CreateProduct";
+import Layout from "../../layouts/Layout.astro";
+
+const categories = await db.select().from(Category);
+---
+
+<Layout>
+    <h1 class="text-3xl font-bold text-center mt-4 text-gray-600">
+        Crear Producto
+    </h1>
+
+    <div class="mt-8">
+        <a
+            href="/products"
+            class="text-white bg-blue-700 hover:bg-blue-800 px-4 py-2 rounded mt-4 inline-block transition-colors font-bold"
+        >
+            Volver
+        </a>
+    </div>
+
+    <CreateProduct client:load categories={categories} />
+</Layout>

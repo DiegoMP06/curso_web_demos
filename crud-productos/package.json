@@ -1,0 +1,40 @@
+{
+  "name": "crud-productos",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/db": "^0.19.0",
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/vercel": "^9.0.4",
+    "@astrojs/vue": "^5.1.4",
+    "@headlessui/vue": "^1.7.23",
+    "@iconify-json/mdi": "^1.2.3",
+    "@radix-ui/react-menubar": "^1.1.16",
+    "@tailwindcss/vite": "^4.2.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^5.17.1",
+    "astro-icon": "^1.1.5",
+    "cloudinary": "^2.9.0",
+    "clsx": "^2.1.1",
+    "dexie": "^4.3.0",
+    "lucide-react": "^0.575.0",
+    "lucide-vue-next": "^0.575.0",
+    "pinia": "^3.0.4",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-dropzone": "^15.0.0",
+    "react-hook-form": "^7.71.2",
+    "sonner": "^2.0.7",
+    "sweetalert2": "^11.26.20",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss": "^4.2.0",
+    "vue": "^3.5.28"
+  }
+}

@@ -1,0 +1,52 @@
+---
+import { Picture } from "astro:assets";
+import { formatCurrency, getResizeImage } from "../../helpers";
+import type { ProductWithCategory } from "../../types";
+import AddToCartButton from "./AddToCartButton.vue";
+
+type Props = {
+    item: ProductWithCategory;
+};
+
+const {
+    item: { Product: product, Category: category }, item
+} = Astro.props;
+---
+
+<div
+    class="rounded overflow-hidden flex flex-col border border-gray-300 bg-white shadow-lg"
+>
+    <Picture
+        src={getResizeImage(product.image, 500, 500)}
+        alt={product.name}
+        width={500}
+        height={500}
+        class="block w-full object-cover aspect-square h-auto"
+        formats={["avif", "webp"]}
+    />
+
+    <div class="flex-1 p-4 flex flex-col">
+        <p class="text-xl font-bold text-gray-600 block">
+            {product.name}
+        </p>
+
+        <p
+            class="text-white bg-blue-700 px-2 py-1 font-bold text-xs inline-block rounded mb-1 self-start"
+        >
+            {category.name}
+        </p>
+
+        <p class="text-2xl font-bold text-blue-700 flex-1">
+            {formatCurrency(product.price)}
+        </p>
+
+        <p class="text-gray-600 font-bold text-lg">
+            Stock:
+            <span class="font-normal">
+                {product.stock} pieza(s)
+            </span>
+        </p>
+
+        <AddToCartButton client:load item={item} />
+    </div>
+</div>

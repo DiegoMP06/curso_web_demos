@@ -1,0 +1,50 @@
+---
+import { Picture } from "astro:assets";
+import HeroImage from "../../assets/hero.png";
+---
+
+<section class="relative min-h-72 overflow-hidden flex">
+    <Picture
+        src={HeroImage}
+        loading="eager"
+        alt="hero"
+        width={HeroImage.width}
+        height={HeroImage.height}
+        class="absolute block w-full object-cover h-full z-0 object-center"
+        formats={["avif", "webp"]}
+    />
+
+    <div
+        class="flex-1 flex relative z-10 bg-linear-to-b md:bg-linear-to-r from-black to-black/60"
+    >
+        <div
+            class="flex-1 flex flex-col items-center md:items-start max-w-4xl mx-auto px-4 py-10"
+        >
+            <p
+                class="text-3xl md:text-5xl font-semibold text-white text-center md:text-left max-w-lg leading-snug"
+            >
+                ¿Qué tal si tu ropa se adapta a ti?
+            </p>
+
+            <p
+                class="mt-4 text-lg text-center md:text-left md:text-xl text-white font-semibold capitalize max-w-sm leading-normal"
+            >
+                Ropa cómoda para <span class="text-blue-400">programadores</span
+                > de verdad.
+            </p>
+
+            <a
+                href="#buy"
+                class="text-lg md:text-xl font-bold px-4 py-2 rounded-2xl bg-white text-blue-700 mt-12 inline-block hover:bg-blue-50 transition-colors border-b-4 border-blue-700"
+            >
+                Comprar Ahora
+            </a>
+
+            <h1
+                class="text-3xl md:text-4xl text-white/70 mt-4 text-center md:text-left"
+            >
+                Moda<span class="font-bold">Tech</span>
+            </h1>
+        </div>
+    </div>
+</section>

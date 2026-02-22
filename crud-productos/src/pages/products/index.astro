@@ -1,0 +1,54 @@
+---
+import { db, Product, count, desc, eq, Category } from "astro:db";
+import Layout from "../../layouts/Layout.astro";
+import ProductItem from "../../components/products/ProductItem.astro";
+import Pagination from "../../components/ui/Pagination.astro";
+
+const itemsPerPage = 10;
+const url = new URL(Astro.request.url);
+const currentPage = Number(url.searchParams.get("page")) || 1;
+
+const totalItemsResult = await db.select({ value: count() }).from(Product);
+
+const totalItems = totalItemsResult[0].value;
+const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+if (currentPage > totalPages || currentPage < 1) {
+    return Astro.redirect("/products");
+}
+
+const products = await db
+    .select()
+    .from(Product)
+    .innerJoin(Category, eq(Product.categoryId, Category.id))
+    .orderBy(desc(Product.id))
+    .limit(itemsPerPage)
+    .offset((currentPage - 1) * itemsPerPage);
+---
+
+<Layout>
+    <h1 class="text-3xl font-bold text-center mt-4 text-gray-600">Productos</h1>
+
+    <div class="mt-8">
+        <a
+            href="/products/create"
+            class="text-white bg-blue-700 hover:bg-blue-800 px-4 py-2 rounded mt-4 inline-block transition-colors font-bold"
+        >
+            Crear Producto
+        </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+        {products.map((item) => <ProductItem item={item} />)}
+    </div>
+
+    {
+        totalPages > 1 && (
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                totalItems={totalItems}
+            />
+        )
+    }
+</Layout>

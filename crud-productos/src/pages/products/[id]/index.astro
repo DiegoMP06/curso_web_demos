@@ -1,0 +1,79 @@
+---
+import { db, Category, eq, Product } from "astro:db";
+import Layout from "../../../layouts/Layout.astro";
+import { formatCurrency, getResizeImage } from "@/helpers";
+import { Picture } from "astro:assets";
+
+const { id } = Astro.params;
+
+if (!id) {
+    return Astro.redirect("/products");
+}
+
+const item = await db
+    .select()
+    .from(Product)
+    .where(eq(Product.id, Number(id)))
+    .innerJoin(Category, eq(Product.categoryId, Category.id))
+    .get();
+
+if (!item) {
+    return Astro.redirect("/products");
+}
+
+const { Product: product, Category: category } = item;
+---
+
+<Layout>
+    <h1
+        class="text-3xl font-bold text-center mt-4 text-gray-600"
+        transition:name={`title-${product.id}`}
+    >
+        {product.name}
+    </h1>
+
+    <div class="mt-8">
+        <a
+            href="/products"
+            class="text-white bg-blue-700 hover:bg-blue-800 px-4 py-2 rounded mt-4 inline-block transition-colors font-bold"
+        >
+            Volver
+        </a>
+    </div>
+
+    <div class="flex flex-col md:flex-row mt-10 gap-6">
+        <div class="md:w-1/2">
+            <Picture
+                src={getResizeImage(product.image, 600, 600)}
+                alt={product.name}
+                width={600}
+                height={600}
+                class="block w-full max-w-96 object-cover aspect-square h-auto mx-auto"
+                formats={["avif", "webp"]}
+                transition:name={`img-${product.id}`}
+            />
+        </div>
+
+        <div class="flex-1">
+            <p class="text-3xl font-bold text-blue-600">
+                {formatCurrency(product.price)}
+            </p>
+
+            <p
+                class="text-white bg-blue-600 px-2 py-1 rounded-xl inline-block mt-2 font-semibold"
+            >
+                {category.name}
+            </p>
+
+            <p class="text-gray-600 font-bold text-lg mt-4">
+                {product.stock} pieza(s)
+            </p>
+
+            <p
+                class="text-gray-600 mt-2 text-wrap text-justify whitespace-pre-wrap"
+            >
+                {product.description}
+            </p>
+        </div>
+    </div>
+</Layout>
